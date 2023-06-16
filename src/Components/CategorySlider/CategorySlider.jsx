@@ -27,6 +27,7 @@ export default function CategorySlider() {
             <div className="my-5 container">
                 <h3>Shop Popular Categories</h3>
                 <Slider {...settings} autoplaySpeed={3000}>
+
                     {Categories.map((item, index) => {
                         return <div key={index}>
                             <img className="w-100" height={250} src={item.image} alt="" />

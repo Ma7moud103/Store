@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Loading from '../Loading/Loading'
 export default function ProductDetails() {
-    let id = useParams()
+    let { id } = useParams()
 
     console.log(id);
     const [Product, setProduct] = useState([])

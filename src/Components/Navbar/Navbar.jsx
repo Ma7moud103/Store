@@ -1,15 +1,11 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import logo from "../../images/freshcart-logo.svg"
 import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 
 import "./navbar.css";
-import { CardContext } from '../Context/CardContext';
-import { useContext } from 'react';
 
-export default function Navbar() {
-  const { count } = useContext(CardContext)
-
+export default function Navbar({ userData }) {
   return <>
     <nav className="navbar navbar-expand-lg navbar-light bg-main-light ">
       <div className="container">
@@ -20,9 +16,12 @@ export default function Navbar() {
           <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+
+          {userData !== null ? <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link " aria-current="page" to="/">Home</NavLink>
+              <NavLink className="nav-link " aria-current="page" to="/home">Home</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link " aria-current="page" to="/products">Products</NavLink>
@@ -33,9 +32,7 @@ export default function Navbar() {
             <li className="nav-item">
               <NavLink className="nav-link " aria-current="page" to="/brands">Brands</NavLink>
             </li>
-
-
-          </ul>
+          </ul> : null}
 
           <ul className="navbar-nav ms-auto mt-2 mb-2 mb-lg-0">
 
@@ -43,30 +40,35 @@ export default function Navbar() {
               Card
               <i className="fa-solid fa-cart-shopping" />
               <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
-                {count}
-                <span className="visually-hidden">unread messages</span>
+                0<span className="visually-hidden">unread messages</span>
               </span>
             </Link>
 
-
-            {/* <li className="nav-item">
-              <NavLink className="nav-link " aria-current="page" to="logout">LogOut</NavLink>
-            </li> */}
+            {/* 
 
             <li className='nav-item d-flex align-items-center'>
-              <i class="fa-brands fa-facebook"></i>
+              <i className="fa-brands fa-facebook"></i>
               <i className='fa-brands mx-2 fa-twitter'></i>
               <i className='fa-brands mx-2 fa-instagram'></i>
               <i className='fa-brands mx-2 fa-tiktok'></i>
               <i className='fa-brands mx-2 fa-linkedin'></i>
               <i className='fa-brands mx-2 fa-youtube'></i>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link " aria-current="page" to="register">Register</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link " aria-current="page" to="login">LogIn</NavLink>
-            </li>
+            </li> */}
+
+
+
+            {userData === null ? <>
+              <li className="nav-item">
+                <NavLink className="nav-link " aria-current="page" to="login">LogIn</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link " aria-current="page" to="register">Register</NavLink>
+              </li> </> :
+              <li className="nav-item">
+                <NavLink className="nav-link " aria-current="page" to="logout">LogOut</NavLink>
+              </li>}
+
+
 
           </ul>
         </div>

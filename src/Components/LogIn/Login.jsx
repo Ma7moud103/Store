@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { useFormik } from 'formik'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import * as Yup from "yup"
 import { baseUrl } from '../../Utilites/BaseUrl'
 import { useNavigate } from 'react-router-dom'
 import { toast } from "react-toastify"
-export default function Login({ Usertoken }) {
+export default function Login({ saveUserData }) {
 
     const notify = (message, type) => { toast[type](message) }
 
@@ -30,23 +30,22 @@ export default function Login({ Usertoken }) {
         onSubmit: (values) => {
             setloading(true)
             axios.post(`${baseUrl}api/v1/auth/signin`, values).then((data) => {
-                console.log(data);
-                if (data.status === 200) {
+                if (data.data.message == "success") {
+
                     localStorage.setItem("token", data.data.token)
-                    setloading(false)
+                    saveUserData()
                     notify("succuss", "success")
                     navigate("/")
-                    console.log(Usertoken());
 
                 }
+
 
             }).catch((err) => {
                 if (err.response.status === 401) {
                     setloading(false)
                     notify(err.response.data.message, "error")
-
                 }
-                console.log(err);
+
             })
         }
     })

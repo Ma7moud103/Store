@@ -8,7 +8,7 @@ export default function HomePage() {
         <>
             <MainSlider />
             <CategorySlider />
-            <Products /> 
+            <Products />
         </>
     )
 }

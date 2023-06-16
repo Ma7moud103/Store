@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
 import * as Yup from "yup"
+
 import { baseUrl } from '../../Utilites/BaseUrl'
 import { useNavigate } from 'react-router-dom'
 import { toast } from "react-toastify"
@@ -14,10 +15,6 @@ export default function Register() {
 
 
     let navigate = useNavigate()
-
-
-
-
 
     let validationSchema = Yup.object({
         name: Yup.string().min(3).max(15).required(),
@@ -36,22 +33,18 @@ export default function Register() {
         validationSchema,
         onSubmit: async (values) => {
             setloading(true)
-            axios.post(`${baseUrl}api/v1/auth/signup`, values).then((data) => {
-                console.log(data);
-                if (data.status === 201) {
-                    setloading(false)
-                    notify("succuss", "success")
+            await axios.post(`${baseUrl}api/v1/auth/signup`, values).then((respose) => {
+                if (respose.status === 201) {
+                    localStorage.setItem("token", respose.data.token)
+                    notify("success", "success")
                     navigate("/login")
-                }
-
-            }).catch((err) => {
-                if (err.response.status === 409) {
                     setloading(false)
-                    notify(err.response.data.message, "error")
 
                 }
-                console.log(err);
+            }).catch((err) => {
+                notify(err.response.data.message, "warning")
             })
+
         }
     })
 
