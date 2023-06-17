@@ -1,1 +1,21 @@
-.Categories {}
+.box_container{
+ color: white;
+}
+ .box{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        margin-left: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+}
+
+.boxitem{
+    width: .5rem;
+    height: .5rem;
+    background-color: white;
+    padding: 2rem;
+    list-style: none;
+    margin: .4rem;
+}

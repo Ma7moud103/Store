@@ -4,8 +4,13 @@ import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 
 import "./navbar.css";
+import { CardContext } from '../../Context/CardContext';
 
-export default function Navbar({ userData }) {
+export default function Navbar({ userData, logout }) {
+
+
+  let { numOfCartItem } = useContext(CardContext)
+
   return <>
     <nav className="navbar navbar-expand-lg navbar-light bg-main-light ">
       <div className="container">
@@ -36,15 +41,13 @@ export default function Navbar({ userData }) {
 
           <ul className="navbar-nav ms-auto mt-2 mb-2 mb-lg-0">
 
-            <Link to="/card" type="button" className="btn border-0 position-relative me-2">
+            <Link to="/card" type="button" className="btn position-relative border-0 position-relative me-2">
               Card
-              <i className="fa-solid fa-cart-shopping" />
-              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
-                0<span className="visually-hidden">unread messages</span>
-              </span>
+              <i className="fa-solid fa-cart-shopping fa-lg" />
+              <div className="badge bg-main position-absolute top-0 end-0">{numOfCartItem}</div>
             </Link>
 
-            {/* 
+
 
             <li className='nav-item d-flex align-items-center'>
               <i className="fa-brands fa-facebook"></i>
@@ -53,7 +56,7 @@ export default function Navbar({ userData }) {
               <i className='fa-brands mx-2 fa-tiktok'></i>
               <i className='fa-brands mx-2 fa-linkedin'></i>
               <i className='fa-brands mx-2 fa-youtube'></i>
-            </li> */}
+            </li>
 
 
 
@@ -65,10 +68,8 @@ export default function Navbar({ userData }) {
                 <NavLink className="nav-link " aria-current="page" to="register">Register</NavLink>
               </li> </> :
               <li className="nav-item">
-                <NavLink className="nav-link " aria-current="page" to="logout">LogOut</NavLink>
+                <span className="nav-link  cursor-pointer " aria-current="page" onClick={logout}>LogOut</span>
               </li>}
-
-
 
           </ul>
         </div>

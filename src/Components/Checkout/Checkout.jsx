@@ -1,25 +1,27 @@
 import { useFormik } from 'formik'
 import React, { useContext } from 'react'
-import { CardContext } from '../Context/CardContext'
+import { CardContext } from '../../Context/CardContext'
 export default function Checkout() {
 
-    let { onlinePayment } = useContext(CardContext)
-    async function handleSubmit(values) {
-        let response = await onlinePayment("6443c152f4edf400082320a3", values)
-        if (response?.data?.status === "success") {
-            console.log("done");
-            window.location.href = response.data.session.url
+    let { Checkout, cartId } = useContext(CardContext)
+
+    async function handlePayment(values) {
+        console.log(values);
+        let res = await Checkout(cartId, values)
+
+        if (res.data.status == "success") {
+            window.location.href = res.data.session.url
         }
     }
-
     let Formik = useFormik({
         initialValues: {
             details: "",
             phone: "",
             city: ""
         },
-        onSubmit: handleSubmit
+        onSubmit: handlePayment
     })
+
     return (
         <>
             <div className="w-50 m-auto">

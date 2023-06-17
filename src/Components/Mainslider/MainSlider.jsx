@@ -3,6 +3,7 @@ import Slider from 'react-slick'
 import slide1 from "../../images/slider/grocery-banner-2.jpeg"
 import slide2 from "../../images/slider/grocery-banner.png"
 import slide3 from "../../images/slider/slider-2.jpeg"
+import { motion } from 'framer-motion'
 
 
 
@@ -19,13 +20,17 @@ export default function MainSlider() {
     };
     return (
         <>
-            <div className="my-3">
+            <motion.div
+
+                animate={{ opacity: 1, transition: { duration: 1, } }}
+                initial={{ opacity: 0 }}
+                className="container">
                 <Slider {...settings} >
                     <img src={slide1} alt="" />
                     <img src={slide2} alt="" />
                     <img src={slide3} alt="" />
                 </Slider>
-            </div>
+            </motion.div>
         </>
     )
 }

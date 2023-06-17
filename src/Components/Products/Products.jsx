@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import axios from 'axios'
 import Product from "../Product/Product.jsx"
 import {
@@ -6,7 +6,6 @@ import {
 } from 'react'
 import { baseUrl } from '../../Utilites/BaseUrl'
 import Loading from '../Loading/Loading.jsx'
-import { CardContext } from '../Context/CardContext.js'
 
 export default function Products() {
 
@@ -15,7 +14,6 @@ export default function Products() {
     const getAllProducts = async () => {
         let { data } = await axios.get(`${baseUrl}api/v1/products`)
         setProducts(data.data)
-
     }
 
 

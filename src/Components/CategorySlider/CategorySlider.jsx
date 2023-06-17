@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { baseUrl } from '../../Utilites/BaseUrl'
 import Slider from 'react-slick'
+import { motion } from 'framer-motion'
 
 
 export default function CategorySlider() {
@@ -24,19 +25,23 @@ export default function CategorySlider() {
     };
     return (
         <>
-            <div className="my-5 container">
+            <motion.div className="my-5 container"
+
+                animate={{ opacity: 1, transition: { duration: 1, delay: .9 } }}
+                initial={{ opacity: 0 }}
+            >
                 <h3>Shop Popular Categories</h3>
                 <Slider {...settings} autoplaySpeed={3000}>
 
                     {Categories.map((item, index) => {
-                        return <div key={index}>
+                        return <div key={index} className='cursor-pointer'>
                             <img className="w-100" height={250} src={item.image} alt="" />
-                            <h6 >{item.name}</h6>
+                            <h6 className='text-center'>{item.name}</h6>
                         </div>
                     })}
 
                 </Slider>
-            </div>
+            </motion.div>
         </>
     )
 }

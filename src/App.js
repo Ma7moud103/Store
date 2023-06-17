@@ -6,14 +6,14 @@ import Register from "./Components/Register/Register.jsx";
 import MainLayout from "./Layoutes/MainLayout/MainLayout.jsx";
 import HomePage from "./Pages/HomePage/HomePage.jsx";
 import { ToastContainer } from 'react-toastify';
-import CardContextProvider from "./Components/Context/CardContext.js";
 import Card from "./Components/Card/Card.jsx";
 import Checkout from "./Components/Checkout/Checkout.jsx";
 import Categories from "./Components/Categories/Categories.jsx"
 import jwtDecode from "jwt-decode";
 import { useEffect, useState } from "react";
 import Protected from "./Components/Protected/Protected.jsx";
-
+import CardContextProvider from "./Context/CardContext.js";
+import Notfound from "./Components/Notfound/Notfound.jsx"
 export default function App() {
   const [userData, setuserData] = useState(null)
 
@@ -22,7 +22,11 @@ export default function App() {
     if (localStorage.getItem("token")) {
       saveUserData()
     }
+
+
+
   }, [])
+
 
   function saveUserData() {
     let token = localStorage.getItem("token")
@@ -30,10 +34,13 @@ export default function App() {
     setuserData(decode)
   }
 
+
+
+
   let routes = createBrowserRouter([
     {
       path: '',
-      element: <MainLayout userData={userData} />,
+      element: <MainLayout setuserData={setuserData} userData={userData} />,
       children: [
         { index: true, element: <Protected><HomePage /></Protected> },
         { path: "home", element: <Protected><HomePage /></Protected> },
@@ -45,16 +52,18 @@ export default function App() {
         { path: "register", element: <Register /> },
         { path: "card", element: <Protected><Card /></Protected> },
         { path: "checkout", element: <Checkout /> },
-        { path: "login", element: <Login saveUserData={saveUserData} Login /> }
+        { path: "login", element: <Login saveUserData={saveUserData} Login /> },
+        { path: "*", element: <Notfound /> }
       ]
     }
   ])
+
   return (
     <>
-
       <ToastContainer theme="colored" />
       <CardContextProvider>
         <RouterProvider router={routes} />
+
       </CardContextProvider>
     </>
   );
