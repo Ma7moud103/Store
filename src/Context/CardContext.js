@@ -1,10 +1,25 @@
 import axios from "axios"
 import { createContext, useEffect, useState } from "react"
 import { baseUrl } from "../Utilites/BaseUrl"
+import jwtDecode from "jwt-decode"
 
 export let CardContext = createContext()
 
 export default function CardContextProvider(props) {
+
+
+
+
+
+
+    const [userData, setuserData] = useState(null)
+
+
+    function saveUserData() {
+        let token = localStorage.getItem("token")
+        let decode = jwtDecode(token)
+        setuserData(decode)
+    }
 
 
     const [numOfCartItem, setnumOfCartItem] = useState(0)
@@ -60,12 +75,19 @@ export default function CardContextProvider(props) {
         let { data } = await getCart()
         if (data.status === "success")
             setnumOfCartItem(data.numOfCartItems)
+        console.log(numOfCartItem);
         setcartId(data.data._id)
     }
     useEffect(() => {
+
+        if (localStorage.getItem("token")) {
+            saveUserData()
+        }
         getintialValues()
     }, [])
-    return <CardContext.Provider value={{ addtocart, getCart, remove, update, Checkout, numOfCartItem, cartId, setnumOfCartItem }}>
+
+
+    return <CardContext.Provider value={{ addtocart, getCart, remove, update, Checkout, numOfCartItem, cartId, setnumOfCartItem, userData, setuserData, saveUserData }}>
         {props.children}
     </CardContext.Provider>
 }

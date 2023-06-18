@@ -20,6 +20,8 @@ export default function Product({ Items }) {
             toast.error("Something Wrong")
         }
     }
+
+
     return (
         <>
             {Items.map((item) => {

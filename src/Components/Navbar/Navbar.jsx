@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 import "./navbar.css";
 import { CardContext } from '../../Context/CardContext';
 
-export default function Navbar({ userData, logout }) {
+export default function Navbar({ logout }) {
 
 
-  let { numOfCartItem } = useContext(CardContext)
+  let { numOfCartItem, userData } = useContext(CardContext)
 
   return <>
     <nav className="navbar navbar-expand-lg navbar-light bg-main-light ">

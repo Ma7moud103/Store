@@ -5,7 +5,10 @@ import * as Yup from "yup"
 import { baseUrl } from '../../Utilites/BaseUrl'
 import { useNavigate } from 'react-router-dom'
 import { toast } from "react-toastify"
-export default function Login({ saveUserData }) {
+import { CardContext } from '../../Context/CardContext'
+export default function Login() {
+
+    let { saveUserData } = useContext(CardContext)
 
     const notify = (message, type) => { toast[type](message) }
 

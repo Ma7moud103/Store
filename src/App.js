@@ -9,38 +9,16 @@ import { ToastContainer } from 'react-toastify';
 import Card from "./Components/Card/Card.jsx";
 import Checkout from "./Components/Checkout/Checkout.jsx";
 import Categories from "./Components/Categories/Categories.jsx"
-import jwtDecode from "jwt-decode";
 import { useEffect, useState } from "react";
 import Protected from "./Components/Protected/Protected.jsx";
 import CardContextProvider from "./Context/CardContext.js";
 import Notfound from "./Components/Notfound/Notfound.jsx"
 export default function App() {
-  const [userData, setuserData] = useState(null)
-
-
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      saveUserData()
-    }
-
-
-
-  }, [])
-
-
-  function saveUserData() {
-    let token = localStorage.getItem("token")
-    let decode = jwtDecode(token)
-    setuserData(decode)
-  }
-
-
-
 
   let routes = createBrowserRouter([
     {
       path: '',
-      element: <MainLayout setuserData={setuserData} userData={userData} />,
+      element: <MainLayout />,
       children: [
         { index: true, element: <Protected><HomePage /></Protected> },
         { path: "home", element: <Protected><HomePage /></Protected> },
@@ -52,7 +30,7 @@ export default function App() {
         { path: "register", element: <Register /> },
         { path: "card", element: <Protected><Card /></Protected> },
         { path: "checkout", element: <Checkout /> },
-        { path: "login", element: <Login saveUserData={saveUserData} Login /> },
+        { path: "login", element: <Login /> },
         { path: "*", element: <Notfound /> }
       ]
     }
