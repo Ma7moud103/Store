@@ -10,7 +10,7 @@ export default function Loading() {
                         height="100"
                         width="100"
                         radius="9"
-                        color='#0aad0a'
+                        color='var(--main-color)'
                         ariaLabel='three-dots-loading'
                         wrapperStyle
                         wrapperClass

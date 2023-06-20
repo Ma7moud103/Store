@@ -8,27 +8,24 @@ export let CardContext = createContext()
 export default function CardContextProvider(props) {
 
 
-
-
-
-
+    const [Products, setProducts] = useState([])
     const [userData, setuserData] = useState(null)
 
+    const [numOfCartItem, setnumOfCartItem] = useState(0)
+    const [cartId, setcartId] = useState(0)
+    let headers = {
+        token: localStorage.getItem("token")
+    }
 
+    const getAllProducts = async () => {
+        let { data } = await axios.get(`${baseUrl}api/v1/products`)
+        setProducts(data.data)
+    }
     function saveUserData() {
         let token = localStorage.getItem("token")
         let decode = jwtDecode(token)
         setuserData(decode)
     }
-
-
-    const [numOfCartItem, setnumOfCartItem] = useState(0)
-    const [cartId, setcartId] = useState(0)
-
-    let headers = {
-        token: localStorage.getItem("token")
-    }
-
     function addtocart(productId) {
         return axios.post(`${baseUrl}api/v1/cart`,
             { productId },
@@ -37,7 +34,6 @@ export default function CardContextProvider(props) {
             }
         ).then(data => data).catch(err => err)
     }
-
     function getCart() {
         return axios.get(`${baseUrl}api/v1/cart`,
             {
@@ -45,7 +41,6 @@ export default function CardContextProvider(props) {
             }
         ).then(data => data).catch(err => err)
     }
-
     function remove(id) {
         return axios.delete(`${baseUrl}api/v1/cart/${id}`,
             {
@@ -53,7 +48,6 @@ export default function CardContextProvider(props) {
             }
         ).then(data => data).catch(err => err)
     }
-
     function update(id, count) {
         return axios.put(`${baseUrl}api/v1/cart/${id}`, { count },
             {
@@ -61,7 +55,6 @@ export default function CardContextProvider(props) {
             }
         ).then(data => data).catch(err => err)
     }
-
     function Checkout(id, shippingAddress) {
         return axios.post(`${baseUrl}api/v1/orders/checkout-session/${id}?url=http://localhost:3000
 `, {
@@ -70,16 +63,15 @@ export default function CardContextProvider(props) {
             ,
             { headers: headers }).then((data) => data).catch((err => err))
     }
-
     async function getintialValues() {
         let { data } = await getCart()
         if (data.status === "success")
             setnumOfCartItem(data.numOfCartItems)
-        console.log(numOfCartItem);
         setcartId(data.data._id)
     }
-    useEffect(() => {
 
+    useEffect(() => {
+        getAllProducts()
         if (localStorage.getItem("token")) {
             saveUserData()
         }
@@ -87,7 +79,7 @@ export default function CardContextProvider(props) {
     }, [])
 
 
-    return <CardContext.Provider value={{ addtocart, getCart, remove, update, Checkout, numOfCartItem, cartId, setnumOfCartItem, userData, setuserData, saveUserData }}>
+    return <CardContext.Provider value={{ addtocart, getCart, remove, update, Checkout, numOfCartItem, Products, cartId, setnumOfCartItem, userData, setuserData, saveUserData }}>
         {props.children}
     </CardContext.Provider>
 }

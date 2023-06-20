@@ -2,12 +2,13 @@ import React, { useContext } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import Navbar from '../../Components/Navbar/Navbar'
 import { CardContext } from '../../Context/CardContext'
+import UpBtn from '../../Components/UpBtn/UpBtn'
 
 export default function MainLayout() {
 
     let navigate = useNavigate()
 
-    let { userData, setuserData } = useContext(CardContext)
+    let { setuserData } = useContext(CardContext)
 
     function Logout() {
         localStorage.removeItem("token")
@@ -18,7 +19,8 @@ export default function MainLayout() {
     return (
         <>
             <Navbar logout={Logout} />
-            <div className="py-3"> <Outlet /></div>
+            <UpBtn />
+            <div className=""> <Outlet /></div>
         </>
     )
 }

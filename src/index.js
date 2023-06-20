@@ -6,6 +6,7 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import 'react-toastify/dist/ReactToastify.css';
+import "jquery/dist/jquery.min.js"
 import "./index.css"
 import App from "./App";
 

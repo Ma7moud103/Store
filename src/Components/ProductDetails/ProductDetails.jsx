@@ -26,12 +26,11 @@ export default function ProductDetails() {
         autoplay: true
     };
 
-    console.log(Product);
 
     return (
         <>
             {Product.length !== 0 ?
-                <div className="container py-5">
+                <div className="container" style={{ paddingTop: "6rem" }}>
                     <div className="row align-items-center">
                         <div className="col-md-4">
                             <Slider {...settings} autoplaySpeed={3000}>

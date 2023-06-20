@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import logo from "../../images/freshcart-logo.svg"
 import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom';
-
 import "./navbar.css";
 import { CardContext } from '../../Context/CardContext';
 
@@ -12,7 +11,7 @@ export default function Navbar({ logout }) {
   let { numOfCartItem, userData } = useContext(CardContext)
 
   return <>
-    <nav className="navbar navbar-expand-lg navbar-light bg-main-light ">
+    <nav className="navbar  navbar-expand-lg navbar-light bg-main-light  position-fixed w-100 ">
       <div className="container">
         <NavLink className="navbar-brand" to="/">
           <img src={logo} alt="logo" />
@@ -32,7 +31,7 @@ export default function Navbar({ logout }) {
               <NavLink className="nav-link " aria-current="page" to="/products">Products</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link " aria-current="page" to="/categories">Categories</NavLink>
+              <NavLink className="nav-link " aria-current="page" to="/games">Games</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link " aria-current="page" to="/brands">Brands</NavLink>
@@ -48,15 +47,6 @@ export default function Navbar({ logout }) {
             </Link>
 
 
-
-            <li className='nav-item d-flex align-items-center'>
-              <i className="fa-brands fa-facebook"></i>
-              <i className='fa-brands mx-2 fa-twitter'></i>
-              <i className='fa-brands mx-2 fa-instagram'></i>
-              <i className='fa-brands mx-2 fa-tiktok'></i>
-              <i className='fa-brands mx-2 fa-linkedin'></i>
-              <i className='fa-brands mx-2 fa-youtube'></i>
-            </li>
 
 
 

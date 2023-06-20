@@ -1,0 +1,93 @@
+@import "./sass/placeholder";
+@import "./sass/variables";
+@import "./sass/mixin";
+
+
+
+.parent {
+    @include transition(5s);
+    @extend %center;
+    background-color: $maincolor;
+    padding: $padding;
+}
+
+.sidbar {
+    width: 200px;
+    height: 100vh;
+    z-index: 0;
+}
+
+.categories {
+    padding-top: 2rem;
+
+    .sidebarMenu {
+        transition: all .5s;
+    }
+
+    .sidebarMenu.hidden {
+        left: -200px;
+    }
+
+    .sidebarMenu.shown {
+        left: 0px;
+    }
+
+
+    .sidbar {
+        ul {
+            list-style: none;
+            padding-top: 100px;
+
+            li {
+                font-weight: 700;
+                font-size: 1rem;
+                padding-top: 1.8rem;
+                text-transform: capitalize;
+                transition: all .4s;
+                cursor: pointer;
+
+                &:hover {
+                    color: var(--main-color);
+                }
+            }
+
+            .active {
+
+                color: var(--main-color);
+                font-weight: bold;
+            }
+
+
+        }
+
+    }
+
+    .menu {
+        height: 100vh;
+        width: 50px;
+    }
+
+    .container {
+        .row {
+            .game {
+                overflow: hidden;
+                padding: 5rem;
+
+                img {
+                    border-radius: 7px;
+                }
+
+                .genre {
+                    padding: 5px 7px;
+                    font-size: .8rem;
+                }
+
+                .platform {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+
+}

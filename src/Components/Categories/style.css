@@ -1,0 +1,69 @@
+.parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parent {
+  transition: all 5s;
+  -webkit-transition: all 5s;
+  -moz-transition: all 5s;
+  background-color: #0aad0a;
+  padding: 3rem;
+}
+
+.sidbar {
+  width: 200px;
+  height: 100vh;
+  z-index: 0;
+}
+
+.categories {
+  padding-top: 2rem;
+}
+.categories .sidebarMenu {
+  transition: all 0.5s;
+}
+.categories .sidebarMenu.hidden {
+  left: -200px;
+}
+.categories .sidebarMenu.shown {
+  left: 0px;
+}
+.categories .sidbar ul {
+  list-style: none;
+  padding-top: 100px;
+}
+.categories .sidbar ul li {
+  font-weight: 700;
+  font-size: 1rem;
+  padding-top: 1.8rem;
+  text-transform: capitalize;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.categories .sidbar ul li:hover {
+  color: var(--main-color);
+}
+.categories .sidbar ul .active {
+  color: var(--main-color);
+  font-weight: bold;
+}
+.categories .menu {
+  height: 100vh;
+  width: 50px;
+}
+.categories .container .row .game {
+  overflow: hidden;
+  padding: 5rem;
+}
+.categories .container .row .game img {
+  border-radius: 7px;
+}
+.categories .container .row .game .genre {
+  padding: 5px 7px;
+  font-size: 0.8rem;
+}
+.categories .container .row .game .platform {
+  font-size: 1rem;
+}/*# sourceMappingURL=style.css.map */

@@ -45,15 +45,12 @@ export default function Card() {
                 <title>Shop Cart</title>
             </Helmet>
             {
-                items ? <motion.div className="bg-main-light p-4 my-4"
+                items ? <motion.div className="bg-main-light px-4" style={{ paddingTop: "5rem" }}
                     animate={{ opacity: 1, transition: { duration: 1, } }}
                     initial={{ opacity: 0 }}
                 >
                     <h3>Shop Cart : </h3>
                     <h6 className='text-main'>Total Cart Price : {items.totalCartPrice}</h6>
-
-
-
 
                     {items.products.map((product) => {
                         return <div key={product.product._id} className="row border-bottom py-2 my-2 align-items-center">
@@ -67,7 +64,7 @@ export default function Card() {
 
                                 <motion.div animate={{ opacity: 1, transition: { duration: 1, delay: 1.2 } }}
                                     initial={{ opacity: 0 }}>
-                                    <h6>{product.product.title}</h6>
+                                    <h6>{product.product.title.split(" ").splice(0, 3).join(" ")}</h6>
                                     <h6 className='text-main'>price : {product.price}</h6>
                                     <button
                                         onClick={() => delet(product.product._id)}
@@ -78,11 +75,11 @@ export default function Card() {
                                     initial={{ opacity: 0 }}>
                                     <button
                                         onClick={() => updateQuntity(product.product._id, product.count + 1)}
-                                        className='btn btn-info btn-sm'>+</button>
+                                        className='btn bg-main text-white btn-sm'>+</button>
                                     <span className='mx-2'>{product.count}</span>
                                     <button
                                         onClick={() => updateQuntity(product.product._id, product.count - 1)}
-                                        className='btn btn-info btn-sm'>-</button>
+                                        className='btn bg-main text-white btn-sm'>-</button>
                                 </motion.div>
                             </div>
 

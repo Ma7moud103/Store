@@ -4,12 +4,10 @@ import { CardContext } from '../../Context/CardContext';
 import { toast } from 'react-toastify';
 import { motion } from 'framer-motion';
 
-export default function Product({ Items }) {
+export default function Product() {
 
 
-    let { addtocart, setnumOfCartItem } = useContext(CardContext)
-
-
+    let { addtocart, setnumOfCartItem, Products } = useContext(CardContext)
 
     async function addproduct(productId) {
         let res = await addtocart(productId)
@@ -20,13 +18,10 @@ export default function Product({ Items }) {
             toast.error("Something Wrong")
         }
     }
-
-
     return (
         <>
-            {Items.map((item) => {
-                return <motion.div key={item.id} className="col-md-3   my-3 "
-
+            {Products.map((item) => {
+                return <motion.div key={item.id} className="col-md-3 my-4 "
 
                     animate={{ opacity: 1, transition: { duration: 1 } }}
                     initial={{ opacity: 0 }}
