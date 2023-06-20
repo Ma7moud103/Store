@@ -54,7 +54,7 @@ export default function Login() {
     })
     return (
         <>
-            <div className="w-50 m-auto my-5">
+            <div className="w-50 m-auto" style={{ paddingTop: "8rem" }}>
 
                 <h2>Login Now</h2>
 

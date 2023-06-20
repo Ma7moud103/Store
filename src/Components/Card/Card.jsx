@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 
 export default function Card() {
 
-    let { getCart, remove, update } = useContext(CardContext)
+    let { getCart, remove, update, setnumOfCartItem } = useContext(CardContext)
     const [items, setitems] = useState(0)
 
     async function getitems() {
@@ -22,7 +22,8 @@ export default function Card() {
         let res = await remove(id)
         if (res.data.status === "success") {
             setitems(res.data.data)
-            toast.success("Product Deleted")
+            setnumOfCartItem(res.data.numOfCartItems)
+            toast.success("product deleted successfully", { duration: 2000, position: "bottom-right" })
         }
 
     }
@@ -31,6 +32,7 @@ export default function Card() {
         let response = await update(id, count)
         if (response.data.status == "success") {
             setitems(response.data.data)
+            toast.success("product updated", { duration: 2000, position: "bottom-right" })
         }
     }
 

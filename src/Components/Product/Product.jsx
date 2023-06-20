@@ -12,10 +12,11 @@ export default function Product() {
     async function addproduct(productId) {
         let res = await addtocart(productId)
         if (res.data.status === "success") {
-            toast.success(res.data.message, { duration: 2000, position: 'top-center' })
+            toast.success(res.data.message, { duration: 2000, position: 'bottom-right' })
             setnumOfCartItem(res.data.numOfCartItems)
         } else {
-            toast.error("Something Wrong")
+            toast.error("Something Wrong", { duration: 2000, position: "bottom-right" })
+
         }
     }
     return (

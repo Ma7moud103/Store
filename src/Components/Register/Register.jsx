@@ -50,7 +50,7 @@ export default function Register() {
 
     return (
         <>
-            <div className="w-50 m-auto my-5">
+            <div className="w-50 m-auto" style={{ paddingTop: "8rem" }}>
 
                 <h2>Register Now</h2>
 

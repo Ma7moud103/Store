@@ -24,7 +24,7 @@ export default function MainSlider() {
 
                 animate={{ opacity: 1, transition: { duration: 1, } }}
                 initial={{ opacity: 0 }}
-                className="" style={{ paddingTop: "6rem", }}>
+                className="" style={{ paddingTop: "5rem", }}>
                 <Slider {...settings} >
                     <img src={slide1} alt="" />
                     <img src={slide2} alt="" />
