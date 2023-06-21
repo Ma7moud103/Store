@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import $ from "jquery"
 export default function UpBtn() {
     const [BackToTopButton, setBackToTopButton] = useState(false)
 
@@ -20,7 +19,7 @@ export default function UpBtn() {
 
     return (
         <>
-            {BackToTopButton && (<div onClick={scrollUp} style={{ bottom: "40px", zIndex: 70, right: "40px", padding: "5px" }} className="btn bg-main position-fixed text-white">Up</div>)}
+            {BackToTopButton && (<div onClick={scrollUp} style={{ bottom: "40px", zIndex: 70, right: "40px", padding: "5px" }} className="btn bg-main position-fixed text-white"><i class="fa-solid fa-chevron-up"></i> </div>)}
         </>
     )
 }

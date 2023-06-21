@@ -53,6 +53,13 @@
   height: 100vh;
   width: 50px;
 }
+.categories .container input:focus {
+  color: #212529;
+  background-color: #fff;
+  outline: 0;
+  border: 1px solid var(--main-color);
+  box-shadow: none;
+}
 .categories .container .row .game {
   overflow: hidden;
   padding: 5rem;

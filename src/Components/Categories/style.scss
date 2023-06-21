@@ -68,6 +68,14 @@
     }
 
     .container {
+        input:focus {
+            color: #212529;
+            background-color: #fff;
+            outline: 0;
+            border: 1px solid var(--main-color);
+            box-shadow: none;
+        }
+
         .row {
             .game {
                 overflow: hidden;
