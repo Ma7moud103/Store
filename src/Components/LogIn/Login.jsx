@@ -37,7 +37,7 @@ export default function Login() {
 
                     localStorage.setItem("token", data.data.token)
                     saveUserData()
-                    notify("succuss", "success")
+                    toast.success("success", { duration: 1000, position: "bottom-right" })
                     navigate("/")
 
                 }
@@ -46,7 +46,7 @@ export default function Login() {
             }).catch((err) => {
                 if (err.response.status === 401) {
                     setloading(false)
-                    notify(err.response.data.message, "error")
+                    toast.error(err.response.data.message, { duration: 1000, position: "bottom-right" })
                 }
 
             })
