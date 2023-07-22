@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/Store/static/css/main.2e13fcbb.css",
+    "main.js": "/Store/static/js/main.837a2993.js",
+    "static/media/slider-2.jpeg": "/Store/static/media/slider-2.92200ddb54f84e0e8c71.jpeg",
+    "static/media/fa-solid-900.ttf": "/Store/static/media/fa-solid-900.4a2cd718d7031b732e76.ttf",
+    "static/media/grocery-banner.png": "/Store/static/media/grocery-banner.2c56649c9cbe2e19b86f.png",
+    "static/media/fa-brands-400.ttf": "/Store/static/media/fa-brands-400.150de8eaa454d669c405.ttf",
+    "static/media/grocery-banner-2.jpeg": "/Store/static/media/grocery-banner-2.7a4a78a90acc3d5847cb.jpeg",
+    "static/media/fa-solid-900.woff2": "/Store/static/media/fa-solid-900.bb975c966c37455a1bc3.woff2",
+    "static/media/error.svg": "/Store/static/media/error.084f5f5b0eb10d3216cb7c939108e1f6.svg",
+    "static/media/fa-brands-400.woff2": "/Store/static/media/fa-brands-400.e033a13ee751afc1860c.woff2",
+    "static/media/fa-regular-400.ttf": "/Store/static/media/fa-regular-400.d87474231f4192884802.ttf",
+    "static/media/fa-regular-400.woff2": "/Store/static/media/fa-regular-400.3223dc79c1adee56370b.woff2",
+    "static/media/freshcart-logo.svg": "/Store/static/media/freshcart-logo.53f7a424c3aedc30a0fb46dc2278137c.svg",
+    "static/media/fa-v4compatibility.ttf": "/Store/static/media/fa-v4compatibility.0e3a648be390bd8cb094.ttf",
+    "static/media/fa-v4compatibility.woff2": "/Store/static/media/fa-v4compatibility.68577e40f3e70067b5da.woff2",
+    "static/media/slick.svg": "/Store/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/Store/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/Store/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/Store/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/Store/index.html",
+    "main.2e13fcbb.css.map": "/Store/static/css/main.2e13fcbb.css.map",
+    "main.837a2993.js.map": "/Store/static/js/main.837a2993.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2e13fcbb.css",
+    "static/js/main.837a2993.js"
+  ]
+}
