@@ -1,1 +1,1 @@
-export const baseUrl = "https://route-ecommerce-app.vercel.app/";
+export const baseUrl = "https://ecommerce.routemisr.com/";

@@ -10,7 +10,6 @@ export default function Login() {
 
     let { saveUserData } = useContext(CardContext)
 
-    const notify = (message, type) => { toast[type](message) }
 
 
     let [loading, setloading] = useState(false)
@@ -39,12 +38,11 @@ export default function Login() {
                     saveUserData()
                     toast.success("success", { duration: 1000, position: "bottom-right" })
                     navigate("/")
-
                 }
 
 
             }).catch((err) => {
-                if (err.response.status === 401) {
+                if (err.response.status == 401) {
                     setloading(false)
                     toast.error(err.response.data.message, { duration: 1000, position: "bottom-right" })
                 }
@@ -78,3 +76,5 @@ export default function Login() {
         </>
     )
 }
+
+

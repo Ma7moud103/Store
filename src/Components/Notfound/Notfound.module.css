@@ -1,1 +1,5 @@
-.Notfound {}
+
+.ptop{
+    padding-top: 65%;
+    transform: translateY(-50%);
+}

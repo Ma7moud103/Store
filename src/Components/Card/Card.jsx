@@ -30,7 +30,7 @@ export default function Card() {
 
     async function updateQuntity(id, count) {
         let response = await update(id, count)
-        if (response.data.status == "success") {
+        if (response.data.status === "success") {
             setitems(response.data.data)
             toast.success("product updated", { duration: 2000, position: "bottom-right" })
         }
@@ -39,13 +39,13 @@ export default function Card() {
     useEffect(() => {
         getitems()
     }, [])
+
     return (
         <>
-
-
             <Helmet>
                 <title>Shop Cart</title>
             </Helmet>
+
             {
                 items ? <motion.div className="bg-main-light px-4" style={{ paddingTop: "5rem" }}
                     animate={{ opacity: 1, transition: { duration: 1, } }}

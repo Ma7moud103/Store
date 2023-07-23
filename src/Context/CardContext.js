@@ -13,6 +13,7 @@ export default function CardContextProvider(props) {
 
     const [numOfCartItem, setnumOfCartItem] = useState(0)
     const [cartId, setcartId] = useState(0)
+
     let headers = {
         token: localStorage.getItem("token")
     }
@@ -21,6 +22,7 @@ export default function CardContextProvider(props) {
         let { data } = await axios.get(`${baseUrl}api/v1/products`)
         setProducts(data.data)
     }
+
     function saveUserData() {
         let token = localStorage.getItem("token")
         let decode = jwtDecode(token)

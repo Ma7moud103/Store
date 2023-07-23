@@ -22,7 +22,7 @@ export default function Product() {
     return (
         <>
             {Products.map((item) => {
-                return <motion.div key={item.id} className="col-md-3 my-4 "
+                return <motion.div key={item.id} className="col-md-3 my-4 product"
 
                     animate={{ opacity: 1, transition: { duration: 1 } }}
                     initial={{ opacity: 0 }}
