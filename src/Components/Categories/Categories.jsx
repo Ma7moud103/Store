@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import  { useContext, useEffect, useRef } from 'react'
 import "./style.css"
 import { GamesContext } from '../../Context/GamesContext';
 import $ from "jquery"
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 export default function Categories() {
 
-    let { Games, gitCategories, setGames } = useContext(GamesContext)
-    const [searchinput, setsearchinput] = useState("")
+    let { gitCategories, setGames } = useContext(GamesContext)
+    // const [searchinput, setsearchinput] = useState("")
     let input = useRef()
     function handlingInput() {
         $("form").on("submit", (e) => {
@@ -43,7 +43,7 @@ export default function Categories() {
             }
         })
         handlingInput()
-    }, [gitCategories])
+    }, [gitCategories , setGames])
 
     return (
         <div className='d-flex justify-content-between categories'>
@@ -65,11 +65,11 @@ export default function Categories() {
             </div>
             <div className="container p-5">
                 <h4 className='fw-bold py-2' >Search For Game : </h4>
-                <form>
+                {/* <form>
                     <input onChange={(e) => {
                         setsearchinput(e.target.value)
                     }} ref={input} type="text" className='form-control' />
-                </form>
+                </form> */}
                 {/* <div className="row">
                     {Games.filter((game) => {
                         if (searchinput == "") {

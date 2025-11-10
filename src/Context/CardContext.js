@@ -69,18 +69,19 @@ export default function CardContextProvider(props) {
             ,
             { headers: headers }).then((data) => data).catch((err => err))
     }
-    async function getintialValues() {
-        let { data } = await getCart()
-        if (data.status === "success")
-            setnumOfCartItem(data.numOfCartItems)
-        setcartId(data.data._id)
-    }
+   
 
     useEffect(() => {
         getAllProducts()
         if (localStorage.getItem("token")) {
             saveUserData()
         }
+
+         async function getintialValues() {
+           let { data } = await getCart();
+           if (data.status === "success") setnumOfCartItem(data.numOfCartItems);
+           setcartId(data.data._id);
+         }
         getintialValues()
     }, [getintialValues])
 

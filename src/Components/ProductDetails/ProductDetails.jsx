@@ -13,10 +13,7 @@ export default function ProductDetails() {
     let { id } = useParams()
 
     const [Product, setProduct] = useState([])
-    const getAllProduct = async () => {
-        let { data } = await axios.get(`${baseUrl}api/v1/products/${id}`)
-        setProduct(data.data)
-    }
+   
 
     async function addproduct(productId) {
         let res = await addtocart(productId)
@@ -31,7 +28,13 @@ export default function ProductDetails() {
 
     
 
-    useEffect(() => { getAllProduct() }, [getAllProduct])
+    useEffect(() => { 
+        const getAllProduct = async () => {
+            let { data } = await axios.get(`${baseUrl}api/v1/products/${id}`)
+            setProduct(data.data)
+        }
+        getAllProduct()
+     }, [getAllProduct])
     var settings = {
         dots: true,
         infinite: true,

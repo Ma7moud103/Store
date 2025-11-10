@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import  { useContext, useEffect } from 'react'
 import Loading from '../Loading/Loading'
 import { CardContext } from '../../Context/CardContext'
 import { toast } from 'react-toastify'
@@ -11,14 +11,7 @@ export default function Card() {
     let { getCart, remove, update, setnumOfCartItem ,items,setitems } = useContext(CardContext)
     
 
-    async function getitems() {
-        let res = await getCart()
-        if (res.data.status === "success") {
-            setitems(res.data.data)
-            // setnumOfCartItem(res.data.data.products.length)
-        }
-
-    }
+   
     async function delet(id) {
         let res = await remove(id)
         if (res.data.status === "success") {
@@ -38,8 +31,16 @@ export default function Card() {
     }
 
     useEffect(() => {
+        async function getitems() {
+            let res = await getCart()
+            if (res.data.status === "success") {
+                setitems(res.data.data)
+                // setnumOfCartItem(res.data.data.products.length)
+            }
+
+        }
         getitems()
-    }, [getitems])
+    }, [])
 
     return (
         <>
