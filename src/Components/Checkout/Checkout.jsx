@@ -9,7 +9,7 @@ export default function Checkout() {
         console.log(values);
         let res = await Checkout(cartId, values)
 
-        if (res.data.status == "success") {
+        if (res.data.status === "success") {
             window.location.href = res.data.session.url
         }
     }

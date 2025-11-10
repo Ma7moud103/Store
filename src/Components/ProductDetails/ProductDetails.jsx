@@ -31,7 +31,7 @@ export default function ProductDetails() {
 
     
 
-    useEffect(() => { getAllProduct() }, [])
+    useEffect(() => { getAllProduct() }, [getAllProduct])
     var settings = {
         dots: true,
         infinite: true,

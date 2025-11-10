@@ -43,7 +43,7 @@ export default function Categories() {
             }
         })
         handlingInput()
-    }, [])
+    }, [gitCategories])
 
     return (
         <div className='d-flex justify-content-between categories'>
@@ -70,7 +70,7 @@ export default function Categories() {
                         setsearchinput(e.target.value)
                     }} ref={input} type="text" className='form-control' />
                 </form>
-                <div className="row">
+                {/* <div className="row">
                     {Games.filter((game) => {
                         if (searchinput == "") {
                             return game
@@ -90,7 +90,7 @@ export default function Categories() {
                             </Link>)
                     })
                     }
-                </div>
+                </div> */}
             </div>
         </div>
     )

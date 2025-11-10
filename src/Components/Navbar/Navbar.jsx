@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import  { useContext, useEffect, useRef } from 'react'
 import logo from "../../images/freshcart-logo.svg"
 import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom';

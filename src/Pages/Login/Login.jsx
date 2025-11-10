@@ -38,7 +38,7 @@ export default function Login() {
         onSubmit: (values) => {
             setloading(true)
             axios.post(`${baseUrl}api/v1/auth/signin`, values).then((data) => {
-                if (data.data.message == "success") {
+                if (data.data.message === "success") {
 
                     localStorage.setItem("token", data.data.token)
                     saveUserData()
@@ -48,7 +48,7 @@ export default function Login() {
 
 
             }).catch((err) => {
-                if (err.response.status == 401) {
+                if (err.response.status === 401) {
                     setloading(false)
                     toast.error(err.response.data.message, { duration: 1000, position: "bottom-right" })
                 }
