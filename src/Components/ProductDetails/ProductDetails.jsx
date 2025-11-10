@@ -34,7 +34,7 @@ export default function ProductDetails() {
             setProduct(data.data)
         }
         getAllProduct()
-     }, [getAllProduct])
+    }, [])
     var settings = {
         dots: true,
         infinite: true,

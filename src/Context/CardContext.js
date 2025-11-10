@@ -83,7 +83,7 @@ export default function CardContextProvider(props) {
            setcartId(data.data._id);
          }
         getintialValues()
-    }, [getintialValues])
+    }, [])
 
 
     return <CardContext.Provider value={{ addtocart, getCart, remove, update, Checkout, numOfCartItem, Products, cartId, setnumOfCartItem, userData, setuserData, saveUserData , items , setitems}}>
