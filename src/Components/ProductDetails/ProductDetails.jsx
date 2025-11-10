@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext} from 'react'
 import { useParams } from 'react-router-dom'
 import { baseUrl } from '../../Utilites/BaseUrl'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Loading from '../Loading/Loading'
 import Slider from 'react-slick'
+import { CardContext } from '../../Context/CardContext'
+import { toast } from 'react-toastify'
 export default function ProductDetails() {
+        let { addtocart, setnumOfCartItem } = useContext(CardContext)
+    
     let { id } = useParams()
 
     const [Product, setProduct] = useState([])
@@ -14,6 +18,18 @@ export default function ProductDetails() {
         setProduct(data.data)
     }
 
+    async function addproduct(productId) {
+        let res = await addtocart(productId)
+        if (res.data.status === "success") {
+            toast.success(res.data.message, { duration: 2000, position: 'bottom-right' })
+            setnumOfCartItem(res.data.numOfCartItems)
+        } else {
+            toast.error("Something Wrong", { duration: 2000, position: "bottom-right" })
+
+        }
+    }
+
+    
 
     useEffect(() => { getAllProduct() }, [])
     var settings = {
@@ -55,7 +71,7 @@ export default function ProductDetails() {
                                     {Product.ratingsAverage}
                                 </div>
                             </div>
-                            <button className='btn bg-main text-white w-100'>Add to card</button>
+                            <button onClick={() => addproduct(Product.id)} className='btn bg-main text-white w-100'>Add to card</button>
 
                         </div>
                     </div>

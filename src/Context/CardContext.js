@@ -8,6 +8,8 @@ export let CardContext = createContext()
 export default function CardContextProvider(props) {
 
 
+        const [items, setitems] = useState(0);
+
     const [Products, setProducts] = useState([])
     const [userData, setuserData] = useState(null)
 
@@ -17,6 +19,8 @@ export default function CardContextProvider(props) {
     let headers = {
         token: localStorage.getItem("token")
     }
+
+    
 
     const getAllProducts = async () => {
         let { data } = await axios.get(`${baseUrl}api/v1/products`)
@@ -81,7 +85,7 @@ export default function CardContextProvider(props) {
     }, [])
 
 
-    return <CardContext.Provider value={{ addtocart, getCart, remove, update, Checkout, numOfCartItem, Products, cartId, setnumOfCartItem, userData, setuserData, saveUserData }}>
+    return <CardContext.Provider value={{ addtocart, getCart, remove, update, Checkout, numOfCartItem, Products, cartId, setnumOfCartItem, userData, setuserData, saveUserData , items , setitems}}>
         {props.children}
     </CardContext.Provider>
 }

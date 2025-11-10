@@ -8,13 +8,14 @@ import { motion } from 'framer-motion'
 
 export default function Card() {
 
-    let { getCart, remove, update, setnumOfCartItem } = useContext(CardContext)
-    const [items, setitems] = useState(0)
+    let { getCart, remove, update, setnumOfCartItem ,items,setitems } = useContext(CardContext)
+    
 
     async function getitems() {
         let res = await getCart()
         if (res.data.status === "success") {
             setitems(res.data.data)
+            // setnumOfCartItem(res.data.data.products.length)
         }
 
     }
@@ -38,7 +39,7 @@ export default function Card() {
 
     useEffect(() => {
         getitems()
-    }, [])
+    }, [getitems])
 
     return (
         <>
@@ -47,7 +48,7 @@ export default function Card() {
             </Helmet>
 
             {
-                items ? <motion.div className="bg-main-light px-4" style={{ paddingTop: "5rem" }}
+                items ? <motion.div className=" px-4 my-2 " style={{ paddingTop: "5rem" }}
                     animate={{ opacity: 1, transition: { duration: 1, } }}
                     initial={{ opacity: 0 }}
                 >
