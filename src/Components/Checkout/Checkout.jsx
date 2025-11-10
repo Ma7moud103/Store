@@ -24,7 +24,7 @@ export default function Checkout() {
 
     return (
         <>
-            <div className="w-50 m-auto" style={{ paddingTop: "6rem" }}>
+            <div className="w-md-50  px-4  m-auto" style={{ paddingTop: "6rem" }}>
                 <form onSubmit={Formik.handleSubmit}>
                     <label htmlFor="details">Details</label>
                     <input onChange={Formik.handleChange} onBlur={Formik.handleBlur} type="text" id='details' name='details' className='form-control my-3' />

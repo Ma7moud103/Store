@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useFormik } from 'formik'
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import * as Yup from "yup"
 import { baseUrl } from '../../Utilites/BaseUrl'
 import { useNavigate } from 'react-router-dom'
@@ -10,17 +10,23 @@ export default function Login() {
 
     let { saveUserData } = useContext(CardContext)
 
-
-
     let [loading, setloading] = useState(false)
 
 
     let navigate = useNavigate()
 
-    let validationSchema = Yup.object({
-        email: Yup.string().email().required(),
-        password: Yup.string().required(),
-    })
+    const validationSchema = Yup.object({
+        email: Yup.string()
+            .email("Please enter a valid email address")
+            .required("Email is required"),
+
+        password: Yup.string()
+            .required("Password is required")
+            .matches(
+                /^[A-Z][a-z0-9]{5,10}$/,
+                "Password must start with an uppercase letter and contain 6–11 characters total (only lowercase letters and digits)"
+            ),
+    });
 
 
     let registerFormik = useFormik({
@@ -52,7 +58,7 @@ export default function Login() {
     })
     return (
         <>
-            <div className="w-50 m-auto" style={{ paddingTop: "8rem" }}>
+            <div className="w-md-50  px-4  m-auto" style={{ paddingTop: "8rem" }}>
 
                 <h2>Login Now</h2>
 

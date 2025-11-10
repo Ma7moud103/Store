@@ -1,6 +1,5 @@
 {
-  "homepage": "http://Ma7moud103.github.io/Store",
-  "name": "project",
+  "name": "Ecommerce-Store",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -16,12 +16,27 @@ export default function Register() {
 
     let navigate = useNavigate()
 
-    let validationSchema = Yup.object({
-        name: Yup.string().min(3).max(15).required(),
-        email: Yup.string().email().required(),
-        password: Yup.string().required().matches(/^[A-Z][a-z0-9]{5,10}$/, "password must start width uppercase..."),
-        rePassword: Yup.string().oneOf([Yup.ref("password")], "password and repassword are not match").required()
-    })
+    const validationSchema = Yup.object({
+        name: Yup.string()
+            .min(3, "Name must be at least 3 characters")
+            .max(15, "Name cannot exceed 15 characters")
+            .required("Name is required"),
+
+        email: Yup.string()
+            .email("Invalid email format")
+            .required("Email is required"),
+
+        password: Yup.string()
+            .required("Password is required")
+            .matches(
+                /^[A-Z][a-z0-9]{5,10}$/,
+                "Password must start with an uppercase letter and contain 6–11 characters total (only lowercase letters and digits)"
+            ),
+
+        rePassword: Yup.string()
+            .oneOf([Yup.ref("password")], "Passwords do not match")
+            .required("Please confirm your password"),
+    });
 
     let registerFormik = useFormik({
         initialValues: {
@@ -50,9 +65,9 @@ export default function Register() {
 
     return (
         <>
-            <div className="w-50 m-auto" style={{ paddingTop: "8rem" }}>
+            <div className="w-md-50  px-4  m-auto" style={{ paddingTop: "8rem" }}>
 
-                <h2>Register Now</h2>
+                <h2 className='mb-3'>Register Now</h2>
 
                 <form onSubmit={registerFormik.handleSubmit}>
                     <label htmlFor="name">Name</label>
@@ -94,7 +109,7 @@ export default function Register() {
 
                     <label htmlFor="rePassword">RePassword</label>
                     <input onBlur={registerFormik.handleBlur}
-                        value={registerFormik.values.repassword}
+                        value={registerFormik.values.rePassword}
                         onChange={registerFormik.handleChange}
                         type="password" name="rePassword" id="rePassword"
                         className='form-control my-3' />
